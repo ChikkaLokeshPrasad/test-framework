@@ -38,5 +38,5 @@
     "description": "Created automatically by the test framework"
   },
   "prompt_input": "Hello from Selenium!",
-  "task_status_new": "in_progress"
+  "task_status_new": "on_hold"
 }
