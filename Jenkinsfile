@@ -20,7 +20,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'https://github.com/YOUR_USERNAME/ui-automation-level2.git'
+                    url: 'https://github.com/ChikkaLokeshPrasad/test-framework.git'
             }
         }
 
