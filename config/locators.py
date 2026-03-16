@@ -35,7 +35,7 @@ class NavLocators:
 
 
 class DashboardLocators:
-    HEADING          = (By.TAG_NAME, "h1")
+    HEADING          = (By.TAG_NAME, "h2.fw-bold")
     MAIN_CARD        = (By.CSS_SELECTOR, ".card, .container")
 
 
