@@ -70,8 +70,9 @@ pipeline {
     post {
 
         always {
-            bat 'docker-compose down --remove-orphans'
-
+            bat(script: 'docker-compose down', returnStatus: true)
+            bat(script: 'docker rm -f selenium-hub chrome-node-1 chrome-node-2 chrome-node-3', returnStatus: true)
+            
             junit testResults: 'reports/junit.xml',
                   allowEmptyResults: true
 
