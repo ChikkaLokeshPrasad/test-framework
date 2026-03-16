@@ -20,7 +20,7 @@ BASE_URL        = os.getenv("BASE_URL",        "https://react-frontend-api-testi
 BROWSER         = os.getenv("BROWSER",         "chrome").lower()
 HEADLESS        = os.getenv("HEADLESS",        "false").lower() in ("1", "true", "yes")
 EXECUTION_MODE  = os.getenv("EXECUTION_MODE",  "remote")   # "local" | "remote"
-GRID_URL        = os.getenv("GRID_URL",        "http://localhost:4444/wd/hub")
+GRID_URL        = os.getenv("GRID_URL",        "http://127.0.0.1:4444/wd/hub")
 
 # ── Timeouts ──────────────────────────────────────────────────────────────────
 DEFAULT_WAIT    = int(os.getenv("DEFAULT_WAIT",   "10"))
