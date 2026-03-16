@@ -24,9 +24,10 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Setup Virtual Environment') {
             steps {
-                bat 'pip install -r requirements.txt'
+                bat 'python -m venv venv'
+                bat 'venv\\Scripts\\pip install -r requirements.txt'
             }
         }
 
@@ -34,7 +35,7 @@ pipeline {
             steps {
                 bat(script: 'docker rm -f selenium-hub chrome-node-1 chrome-node-2 chrome-node-3', returnStatus: true)
                 bat 'docker-compose up -d'
-                bat 'ping -n 30 127.0.0.1 > nul'
+                bat 'ping -n 40 127.0.0.1 > nul'
             }
         }
 
@@ -49,7 +50,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 bat '''
-                    pytest -n 3 --dist=loadscope ^
+                    venv\\Scripts\\pytest -n 3 --dist=loadscope ^
                            --alluredir=reports/allure-results ^
                            --junitxml=reports/junit.xml ^
                            -v
@@ -74,7 +75,7 @@ pipeline {
         always {
             bat(script: 'docker-compose down', returnStatus: true)
             bat(script: 'docker rm -f selenium-hub chrome-node-1 chrome-node-2 chrome-node-3', returnStatus: true)
-            
+
             junit testResults: 'reports/junit.xml',
                   allowEmptyResults: true
 
@@ -90,7 +91,7 @@ pipeline {
         }
 
         failure {
-            echo 'Tests failed. Check Allure report and archived screenshots.'
+            echo 'Tests failed. Check Allure report and screenshots.'
         }
     }
 }
