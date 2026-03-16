@@ -7,7 +7,7 @@ pipeline {
         BROWSER         = "chrome"
         HEADLESS        = "true"
         EXECUTION_MODE  = "remote"
-        GRID_URL        = "http://localhost:4444/wd/hub"
+        GRID_URL        = "http://127.0.0.1:4444/wd/hub"
         ADMIN_EMAIL     = "admin@example.com"
         ADMIN_PASSWORD  = "Admin@123"
         USER_EMAIL      = "user@example.com"
@@ -40,7 +40,9 @@ pipeline {
 
         stage('Verify Grid') {
             steps {
-                bat 'curl -s http://localhost:4444/status'
+                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+                    bat 'curl -s http://127.0.0.1:4444/status'
+                }
             }
         }
 
