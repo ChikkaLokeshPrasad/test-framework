@@ -4,7 +4,7 @@
     "password": "Admin@123"
   },
   "normal_user": {
-    "email": "user@example.com",
+    "email": "jhon@example.com",
     "password": "User@123"
   },
   "invalid_login_matrix": [
