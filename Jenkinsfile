@@ -32,7 +32,7 @@ pipeline {
 
         stage('Start Selenium Grid') {
             steps {
-                bat 'docker-compose up -d'
+                bat 'docker-compose up -d --remove-orphans'
                 bat 'ping -n 20 127.0.0.1 > nul'
             }
         }
@@ -69,7 +69,7 @@ pipeline {
     post {
 
         always {
-            bat 'docker-compose down'
+            bat 'docker-compose down --remove-orphans'
 
             junit testResults: 'reports/junit.xml',
                   allowEmptyResults: true
