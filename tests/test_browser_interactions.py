@@ -135,9 +135,8 @@ def test_tc08_iframe_and_window_handling(admin_driver):
         )
 
     with allure.step("Verify we are back on the main page after iframe"):
-        # Try finding a main-page element — proves default_content() worked
-        assert page.is_displayed(page.wait.is_visible.__self__.__class__,
-                                  timeout=1) or True   # page object still usable
+        assert admin_driver.current_url == main_url, \
+            "URL changed after iframe — default_content() may not have been called"
 
     # ── Part B: New Tab ───────────────────────────────────────────────────────
     with allure.step("Open new tab and switch to it"):
