@@ -32,7 +32,8 @@ pipeline {
 
         stage('Start Selenium Grid') {
             steps {
-                bat 'docker-compose up -d --remove-orphans'
+                bat(script: 'docker rm -f selenium-hub chrome-node-1 chrome-node-2 chrome-node-3', returnStatus: true)
+                bat 'docker-compose up -d'
                 bat 'ping -n 20 127.0.0.1 > nul'
             }
         }
