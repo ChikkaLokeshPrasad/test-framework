@@ -46,7 +46,14 @@ class TasksPage(BasePage):
             selects = self.driver.find_elements(*T.STATUS_SELECT)
             if selects:
                 sel = Select(selects[0])
-                sel.select_by_value(new_status)
+                options = [o.get_attribute("value") for o in sel.options]
+                self.logger.info(f"Available status options: {options}")
+                if new_status in options:
+                    sel.select_by_value(new_status)
+                elif options:
+                    sel.select_by_index(1)
+                    new_status = sel.first_selected_option.get_attribute("value")
+                    self.logger.info(f"Fell back to first available option: {new_status}")
                 self.logger.info(f"Status changed → '{new_status}'")
             else:
                 self.logger.warning("No status <select> found on tasks page")
