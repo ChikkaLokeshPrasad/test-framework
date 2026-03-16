@@ -50,31 +50,23 @@ class UsersLocators:
 
 
 class ProjectsLocators:
-    # "New Project" button — btn btn-primary with plus icon
-    NEW_BTN          = (By.CSS_SELECTOR, "button.btn.btn-primary")
-    # Modal form fields
-    MODAL            = (By.CSS_SELECTOR, ".modal.show, .modal-dialog")
-    NAME_INPUT       = (By.CSS_SELECTOR, ".modal input[type='text'], .modal input[name='name'], input#name, input#projectName")
-    DESC_INPUT       = (By.CSS_SELECTOR, ".modal textarea, textarea[name='description']")
-    MODAL_SUBMIT     = (By.CSS_SELECTOR, ".modal button[type='submit'], .modal .btn-primary")
-    # Status filter <select> on the projects list page
-    STATUS_FILTER    = (By.CSS_SELECTOR, "select.form-select")
-    # Project cards / table rows
-    PROJECT_ITEMS    = (By.CSS_SELECTOR, ".card, table tbody tr")
-    PROJECT_NAME     = (By.CSS_SELECTOR, ".card-title, .fw-bold, td:first-child")
-    # Search input
-    SEARCH_INPUT     = (By.CSS_SELECTOR, "input[type='search'], input[placeholder*='Search'], input[placeholder*='search']")
+    NEW_BTN       = (By.CSS_SELECTOR, "button.btn.btn-primary")
+    MODAL         = (By.CSS_SELECTOR, ".modal.show, .modal-dialog")
+    NAME_INPUT    = (By.CSS_SELECTOR, ".modal input.form-control")
+    DESC_INPUT    = (By.CSS_SELECTOR, ".modal textarea.form-control")
+    MODAL_SUBMIT  = (By.CSS_SELECTOR, ".modal button[type='submit']")
+    STATUS_FILTER = (By.CSS_SELECTOR, "select.form-select")
+    PROJECT_ITEMS = (By.CSS_SELECTOR, "table tbody tr")
+    PROJECT_NAME  = (By.CSS_SELECTOR, "td:nth-child(2) .fw-semibold")
+    SEARCH_INPUT  = (By.CSS_SELECTOR, "input[type='search']")
 
 
 class TasksLocators:
-    TABLE_ROWS       = (By.CSS_SELECTOR, "table tbody tr")
-    # Status <select> inside each task row
-    STATUS_SELECT    = (By.CSS_SELECTOR, "select.form-select, select[name='status']")
-    # Status badge/cell when read-only
-    STATUS_BADGE     = (By.CSS_SELECTOR, ".badge, td:nth-child(3), td:nth-child(4)")
-    # Edit / update button per row
-    EDIT_BTN         = (By.CSS_SELECTOR, "button.btn-warning, button[title='Edit'], button.btn-sm")
-    SAVE_BTN         = (By.CSS_SELECTOR, "button[type='submit'], button.btn-success, button.btn-primary")
+    TABLE_ROWS    = (By.CSS_SELECTOR, "table tbody tr")
+    STATUS_SELECT = (By.CSS_SELECTOR, "select.form-select, select[name='status']")
+    STATUS_BADGE  = (By.CSS_SELECTOR, "td:nth-child(3) .badge")
+    EDIT_BTN      = (By.CSS_SELECTOR, "button.btn-outline-primary.btn-sm")
+    SAVE_BTN      = (By.CSS_SELECTOR, "button[type='submit'], button.btn-success")
 
 
 class TestScenariosLocators:
